@@ -26,6 +26,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div>
   <form name="loginform" action="loginAction" method="post">
    <table>
+   	 <tr>
+        <td>
+          <font color="red">${message} </font>
+        </td>   
+     </tr>
      <tr>
        <td>用户名：</td>
        <td>
@@ -42,6 +47,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td>
         <input type="submit"  value="登录"></td>
      </tr>
+     
+     <tr>
    </table>
   </form>
  </div>
