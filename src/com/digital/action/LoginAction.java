@@ -5,15 +5,16 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.sql.*;
 
 public class LoginAction extends ActionSupport {
-    private String userName;
+    private String username;
     private String password;
+    private String message;
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -24,7 +25,6 @@ public class LoginAction extends ActionSupport {
         this.password = password;
     }
 
-    private String message;
 
     public String getMessage() {
         return message;
@@ -34,44 +34,63 @@ public class LoginAction extends ActionSupport {
         this.message = message;
     }
 
+    // 数据库名称、密码等信息
+    private static class SqlInfo {
+        static final String driverName = "com.mysql.jdbc.Driver";
+        static final String url = "jdbc:mysql://localhost:3306/CBDProject?" +
+                "characterEncoding=utf8&useConfigs=maxPerformance&useSSL=false";
+        static final String username = "root";
+        static final String password = "root123";
+    }
+
     public String login() throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        String back = null;
+        Connection connection = null; // 端口
+        PreparedStatement preparedStatement = null; // sql语句模型
+        ResultSet resultSet = null; // 查询结果集合
+        String result = null; // 返回的查询结果
+
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String user = "root";
-            String pass = "root123";
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CBDProject?characterEncoding=utf8&useConfigs=maxPerformance&useSSL=false", user, pass);
-            String sql = "select * from user_info where userName='" + userName + "' and password='" + password + "'";
-            System.out.println(userName + password);
-            pstmt = conn.prepareStatement(sql);
-            rs = pstmt.executeQuery();
-            if (rs.next()) {
-                back = "success";
+            // 装载驱动
+            Class.forName(SqlInfo.driverName);
+
+            // 建立连接
+            connection = DriverManager.getConnection(SqlInfo.url, SqlInfo.username, SqlInfo.password);
+
+            // sql语句
+            String sql = "select * from user_info where username='" + username + "' and password='" + password + "'";
+
+            // 执行语句
+            preparedStatement = connection.prepareStatement(sql);
+
+            // 查询结果
+            resultSet = preparedStatement.executeQuery();
+
+            // 非空代表查询成功
+            if (resultSet.next()) {
+                result = "success";
             } else {
                 setMessage("登录失败，请检查用户名和密码是否正确！");
-                back = "input";
+                result = "input";
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            // 关闭连接
             try {
-                if (null != rs) {
-                    rs.close();
+                if (null != resultSet) {
+                    resultSet.close();
                 }
-                if (null != pstmt) {
-                    pstmt.close();
+                if (null != preparedStatement) {
+                    preparedStatement.close();
                 }
-                if (null != conn) {
-                    conn.close();
+                if (null != connection) {
+                    connection.close();
                 }
-            } catch (Exception e2) {
-                e2.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
-        return back;
+        return result;
     }
 
 }
