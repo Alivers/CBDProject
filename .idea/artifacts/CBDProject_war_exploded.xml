@@ -6,8 +6,13 @@
         <element id="directory" name="classes">
           <element id="module-output" name="CBDProject" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib1" />
+          <element id="library" level="project" name="lib" />
+        </element>
       </element>
       <element id="javaee-facet-resources" facet="CBDProject/web/Web" />
+      <element id="javaee-facet-resources" facet="CBDProject/web/Web2" />
     </root>
   </artifact>
 </component>

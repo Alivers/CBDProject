@@ -9,11 +9,11 @@ public class LoginAction extends ActionSupport {
     private String password;
     private String message;
 
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUserName(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -72,6 +72,66 @@ public class LoginAction extends ActionSupport {
                 setMessage("登录失败，请检查用户名和密码是否正确！");
                 result = "input";
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // 关闭连接
+            try {
+                if (null != resultSet) {
+                    resultSet.close();
+                }
+                if (null != preparedStatement) {
+                    preparedStatement.close();
+                }
+                if (null != connection) {
+                    connection.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
+
+    // 注册功能：duplicate code，需要后续修改
+    public String register() throws Exception {
+        Connection connection = null; // 端口
+        PreparedStatement preparedStatement = null; // sql语句模型
+        ResultSet resultSet = null; // 查询结果集合
+        String result = null; // 返回的查询结果
+
+        try {
+            // 装载驱动
+            Class.forName(SqlInfo.driverName);
+
+            // 建立连接
+            connection = DriverManager.getConnection(SqlInfo.url, SqlInfo.username, SqlInfo.password);
+
+            // 查询是否有重复的用户名
+            String sqlQuery = "select * from user_info where username='" + username + "'";
+            preparedStatement = connection.prepareStatement(sqlQuery);
+
+            // 查询结果
+            resultSet = preparedStatement.executeQuery();
+            // 空代表用户名没有重复
+            if (!resultSet.next()) {
+                result = "success";
+            } else {
+                setMessage("用户名重复，注册失败！");
+                result = "input";
+                return result;
+            }
+
+            // sql插入语句
+            String sqlInsert = "insert into user_info values (" + 100 + ", '" + username + "'" + ", " + "'" + password + "'" +
+                    ", '', '', '', '', '', '', '', " + 0 + ", '1999-6-30'" + ")";
+            preparedStatement = connection.prepareStatement(sqlInsert);
+            preparedStatement.execute();
+
+            // 显示注册成功信息
+            setMessage("注册成功！");
+
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

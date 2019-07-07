@@ -6,13 +6,15 @@
 <struts>
 
     <package name="digital" namespace="/" extends="struts-default">
-
-
         <action name="loginAction" class="com.digital.action.LoginAction" method="login">
             <result name="success">/index.jsp</result>
             <result name="input">/login.jsp</result>
         </action>
 
+        <action name="registerAction" class="com.digital.action.LoginAction" method="register">
+            <result name="success">/index.jsp</result>
+            <result name="input">/login.jsp</result>
+        </action>
 
     </package>
 
