@@ -34,7 +34,7 @@
             <tr>
                 <td>用户名：</td>
                 <td>
-                    <input name="username" type="text"/>
+                    <input name="userName" type="text"/>
                 </td>
             </tr>
             <tr>
