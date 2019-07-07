@@ -25,23 +25,22 @@ public class RegisterAction extends ActionSupport {
         this.rePassword = rePassword;
     }
 
-//    @Override
-//    public void validate() {
-//        if (user.getUsername().length() == 0)
-//            addFieldError("username", "用户名不能为空");
-//        if (user.getPassword().length() == 0)
-//            addFieldError("password", "密码不能为空");
-//        if (!(user.getPassword() == rePassword))
-//            addFieldError("repassword", "确认密码与登陆密码不一致");
-//        // ...
-//    }
+    @Override
+    public void validate() {
+        if (user.getUserName().length() == 0)
+            addFieldError("userName", "用户名不能为空");
+        if (user.getPassword().length() == 0)
+            addFieldError("password", "密码不能为空");
+        if (!(user.getPassword().equals(rePassword)))
+            addFieldError("rePassword", "确认密码与登陆密码不一致");
+        // ...
+    }
 
     public String execute() throws Exception {
-//        validate();
+        validate();
         UserDAO ud = new UserDAOImpl();
         if (ud.addUser(user))
             return "success";
-        else
-            return "input";
+        return "input";
     }
 }
