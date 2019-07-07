@@ -1,6 +1,6 @@
 package com.digital.action;
 
-import com.digital.dao.iml.UserDAOImpl;
+import com.digital.dao.impl.UserDAOImpl;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport {

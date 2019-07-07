@@ -1,4 +1,4 @@
-package com.digital.dao.iml;
+package com.digital.dao.impl;
 
 import com.digital.dao.BaseDAO;
 import com.digital.dao.UserDAO;

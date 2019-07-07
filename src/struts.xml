@@ -15,7 +15,10 @@
             <result name="success">/index.jsp</result>
             <result name="input">/login.jsp</result>
         </action>
-
-    </package>
+        
+		<action name="list" class="com.digital.action.ProductInfoAction" method="list">
+            <result name="index">/index.jsp</result>	
+        </action>
+    </package>  
 
 </struts>
