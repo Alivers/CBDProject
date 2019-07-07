@@ -9,7 +9,7 @@
 <head>
     <base href="<%=basePath%>">
 
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>电子商城-首页</title>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
@@ -21,6 +21,20 @@
 </head>
 
 <body>
-This is my JSP page 魏宇翔. <br>
+	<div class="sx mt10">
+		<div class="sx_a"><span>所有分类 > 类型</span></div>
+		  <s:iterator id="typeItem" value="#request.typeList">
+			<div class="sx_b">		
+				<p class="tit fl">${typeItem.name }</p>
+				<p class="con fl">
+					&nbsp;品牌分类 		<!-- 后续完善 -->
+				</p>
+				<!-- 
+				<p class="more fl"><img src="images/d006.jpg"/></p>  
+				-->
+			
+			</div>
+		  </s:iterator>
+	</div>
 </body>
 </html>

@@ -42,27 +42,57 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    //=> 未实现
-    public int addUser(User user) {
-        return 0;
+    public boolean addUser(User user) {
+        String sql = String.format("insert into %s values " +
+                        "(%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, '%s')",
+                listName,
+                0,
+                user.getUsername(),
+                user.getPassword(),
+                "use",
+                "use",
+                "use",
+                "use",
+                "use",
+                "use",
+                "use",
+                0,
+                "2012-4-4"
+                /*user.getId(),
+                user.getUsername(),
+                user.getPassword(),
+                user.getRealName(),
+                user.getSex(),
+                user.getAddress(),
+                user.getQuestion(),
+                user.getAnswer(),
+                user.getEmail(),
+                user.getFavorite(),
+                user.getScore(),
+                user.getRegDate().toString()*/
+        );
+        if (hasUsername(user.getUsername()))
+            return false;
+        executeSqlStatement(sql);
+        return true;
     }
 
-    //
-    //=> Unimplemented
-    // private void/*boolean*/ executeSqlStatement(String sqlStatement) {
-    //     // 建立连接
-    //     // 执行语句...
-    //     // 关闭连接
-    // }
-    //
+    private void executeSqlStatement(String sqlStatement) {
+        Connection connection = null;
+        PreparedStatement statement = null;
 
-    //
-    //=> Unimplemented
-    // public void/*boolean*/ addUser(User user) {
-    //     String sql = /* sql插入语句 */
-    //     executeSqlStatement(sql);
-    // }
-    //
+        boolean result;
+
+        try {
+            connection = database.getConnection();
+            statement = connection.prepareStatement(sqlStatement);
+            statement.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            database.closeAll(connection, statement, null);
+        }
+    }
 
     public boolean loginInfoIsCorrect(String username, String password) {
         String sql = String.format("select * from %s where username='%s' and password='%s'",

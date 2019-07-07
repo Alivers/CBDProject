@@ -11,11 +11,14 @@
             <result name="input">/login.jsp</result>
         </action>
 
-        <action name="registerAction" class="com.digital.action.LoginAction" method="register">
+        <action name="registerAction" class="com.digital.action.RegisterAction">
             <result name="success">/index.jsp</result>
-            <result name="input">/login.jsp</result>
+            <result name="input">/register.jsp</result>
         </action>
-
-    </package>
+        
+		<action name="list" class="com.digital.action.ProductInfoAction" method="list">
+            <result name="index">/index.jsp</result>	
+        </action>
+    </package>  
 
 </struts>

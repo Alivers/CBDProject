@@ -4,5 +4,5 @@ import com.digital.entity.User;
 
 public interface UserDAO {
     //增加用户
-    public int addUser(User user);
+    public boolean addUser(User user);
 }
