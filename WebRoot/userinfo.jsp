@@ -34,7 +34,24 @@
 				<td width="250" align="left" valign="middle">
 				<s:property value="user.userName" /></td>
 			</tr>
-			<!-- TODO: 其他字段的相似代码 -->
+			<tr>
+				<td width="100" height="35" align="right" valign="middle">
+					真实姓名：</td>
+				<td width="250" align="left" valign="middle">
+				<s:property value="user.realName" /></td>
+			</tr>
+			<tr>
+				<td width="100" height="35" align="right" valign="middle">
+					通信地址：</td>
+				<td width="250" align="left" valign="middle">
+				<s:property value="user.address" /></td>
+			</tr>
+			<tr>
+				<td width="100" height="35" align="right" valign="middle">
+					电子邮件：</td>
+				<td width="250" align="left" valign="middle">
+				<s:property value="user.email" /></td>
+			</tr>
 			
 			
 		</table>
