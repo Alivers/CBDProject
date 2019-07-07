@@ -47,7 +47,7 @@ public class UserDAOImpl implements UserDAO {
                         "(%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, '%s')",
                 listName,
                 0,
-                user.getUsername(),
+                user.getUserName(),
                 user.getPassword(),
                 "use",
                 "use",
@@ -71,7 +71,7 @@ public class UserDAOImpl implements UserDAO {
                 user.getScore(),
                 user.getRegDate().toString()*/
         );
-        if (hasUsername(user.getUsername()))
+        if (hasUsername(user.getUserName()))
             return false;
         executeSqlStatement(sql);
         return true;
