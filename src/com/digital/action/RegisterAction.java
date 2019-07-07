@@ -9,12 +9,22 @@ public class RegisterAction extends ActionSupport {
     private User user;
     private String rePassword;
 
+    private String message = "";
+
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public String getRePassword() {
@@ -25,22 +35,13 @@ public class RegisterAction extends ActionSupport {
         this.rePassword = rePassword;
     }
 
-    @Override
-    public void validate() {
-        if (user.getUserName().length() == 0)
-            addFieldError("userName", "用户名不能为空");
-        if (user.getPassword().length() == 0)
-            addFieldError("password", "密码不能为空");
-        if (!(user.getPassword().equals(rePassword)))
-            addFieldError("rePassword", "确认密码与登陆密码不一致");
-        // ...
-    }
-
     public String execute() throws Exception {
-        validate();
         UserDAO ud = new UserDAOImpl();
-        if (ud.addUser(user))
+        if (ud.addUser(user)) {
+            setMessage("注册成功");
             return "success";
+        }
+        setMessage("用户名重复，注册失败");
         return "input";
     }
 }
