@@ -27,10 +27,15 @@
 <body>
 <div class="reg_c fl ah">
     <s:form action="registerAction" method="post" name="registerform"> <!-- registerAction和struts.xml中的一样 -->
+        <tr>
+            <td>
+                <font color="red">${message} </font>
+            </td>
+        </tr>
         <table width="300" align="center" style="text-align:center; ">
-            <s:textfield name="user.userName" label="登录名称" style="width:220px;"/><s:fielderror name="userName"></s:fielderror>
-            <s:password name="user.password" label="登录密码" style="width:220px;"/><s:fielderror name="password"></s:fielderror>
-            <s:password name="rePassword" label="确认密码" style="width:220px;"/><s:fielderror name="rePassword"></s:fielderror>
+            <s:textfield name="user.userName" label="登录名称" style="width:220px;"/>
+            <s:password name="user.password" label="登录密码" style="width:220px;"/>
+            <s:password name="rePassword" label="确认密码" style="width:220px;"/>
             <s:textfield name="user.realName" label="真实姓名" style="width:220px;"/>
             <s:textfield name="user.address" label="通信地址" style="width:220px;"/>
             <s:textfield name="user.email" label="电子邮件" style="width:220px;"/>
