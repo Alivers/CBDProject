@@ -24,6 +24,20 @@
 </head>
 
 <body>
+	<div class="itop_body">
+      <div class="itop_left fl">欢迎光临好东东买卖网！  
+      </div>
+	<div class="itop_right fl">
+	  <div id="header">
+          <sx:div id="tsdiv" updateFreq="20000" href="login.action">
+          </sx:div>
+        </div>
+        <!-- 用于显示请求 -->
+	  <font color="red">${message}</font>
+	  <!-- 省略其他代码 -->
+      </div>
+    </div>
+
 	<div class="sx mt10">
 		<div class="sx_a">
 			<span>所有分类 > 类型</span>
