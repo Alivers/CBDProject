@@ -26,11 +26,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div>
   <form name="loginform" action="loginAction" method="post">
    <table>
-   	 <tr>
+   	<tr>
         <td>
           <font color="red">${message} </font>
         </td>   
-     </tr>
+      </tr>
      <tr>
        <td>用户名：</td>
        <td>
