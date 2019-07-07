@@ -44,4 +44,15 @@ public class RegisterAction extends ActionSupport {
         setMessage("用户名重复，注册失败");
         return "input";
     }
+//    public void validateRegister(){
+//        if(user.getUserName()==null || user.getUserName().equals("")){
+//    	//this.addFieldError("user.UserName","用户名不能为空");
+//           this.addFieldError("user.userName",getText("userName.null"));
+//        }
+//        if(user.getUserName()==null || user.getUserName().equals("")){
+//        	//this.addFieldError("user.UserName","用户名不能为空");
+//               this.addFieldError("user.userName",getText("userName.null"));
+//        }
+//      }
+
 }
