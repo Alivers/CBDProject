@@ -1,14 +1,12 @@
 package com.digital.action;
 
-import com.digital.dao.UserAccess;
+import com.digital.dao.iml.UserDAOImpl;
 import com.opensymphony.xwork2.ActionSupport;
-
-import java.sql.*;
 
 public class LoginAction extends ActionSupport {
     private String username;
     private String password;
-    private String message;
+    private String message = "";
 
     public String getUsername() {
         return username;
@@ -35,7 +33,7 @@ public class LoginAction extends ActionSupport {
         this.message = message;
     }
 
-    private UserAccess databaseAccessTool = new UserAccess();
+    private UserDAOImpl databaseAccessTool = new UserDAOImpl();
 
     public String login() {
         if (databaseAccessTool.loginInfoIsCorrect(username, password)) {

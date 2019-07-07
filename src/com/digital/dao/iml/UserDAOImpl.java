@@ -1,6 +1,8 @@
-package com.digital.dao;
+package com.digital.dao.iml;
 
-import com.digital.database.Database;
+import com.digital.dao.BaseDAO;
+import com.digital.dao.UserDAO;
+import com.digital.entity.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,9 +10,9 @@ import java.sql.ResultSet;
 
 // dao（Data Access Object）层，包含了user_info表单的增删改查等功能。
 //=> 还需要增加很多方法去完善。
-public class UserAccess {
+public class UserDAOImpl implements UserDAO {
     static private String listName = "user_info";
-    private Database database = new Database();
+    private BaseDAO database = new BaseDAO();
 
     // 根据sql语句进行查询，查到了返回true，否则返回false。
     private boolean getQueryResult(String sqlQueryStatement) {
@@ -33,10 +35,16 @@ public class UserAccess {
             result = false;
             e.printStackTrace();
         } finally {
-            database.close(connection, statement, resultSet);
+            database.closeAll(connection, statement, resultSet);
         }
 
         return result;
+    }
+
+    @Override
+    //=> 未实现
+    public int addUser(User user) {
+        return 0;
     }
 
     //
@@ -50,7 +58,7 @@ public class UserAccess {
 
     //
     //=> Unimplemented
-    // public void/*boolean*/ insertUser(User user) {
+    // public void/*boolean*/ addUser(User user) {
     //     String sql = /* sql插入语句 */
     //     executeSqlStatement(sql);
     // }
