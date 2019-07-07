@@ -11,41 +11,6 @@
 
     <title>My JSP 'login.jsp' starting page</title>
 
-<<<<<<< HEAD
-  </head>
-  
-  <body>
-  <div>
-  <form name="loginform" action="loginAction" method="post">
-   <table>
-   	<tr>
-        <td>
-          <font color="red">${message} </font>
-        </td>   
-      </tr>
-     <tr>
-       <td>用户名：</td>
-       <td>
-        <input name="userName" type="text"/>
-       </td>
-     </tr>
-     <tr>
-       <td>密码：</td>
-       <td>
-        <input name="password" type="password"/>
-       </td>
-     </tr>
-     <tr>
-       <td>
-        <input type="submit"  value="登录"></td>
-     </tr>
-     
-     <tr>
-   </table>
-  </form>
- </div>
-  </body>
-=======
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
@@ -92,5 +57,4 @@
     </form>
 </div>
 </body>
->>>>>>> 0ad169ebf36d3c4208443975a29f279e6ed3b7bc
 </html>
