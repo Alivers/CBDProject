@@ -5,5 +5,5 @@ import java.util.List;
 import com.digital.entity.Type;
 
 public interface TypeDAO {
-	public List<Type> getAll();
+    public List<Type> getAll();
 }
