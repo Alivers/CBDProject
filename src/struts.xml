@@ -11,9 +11,9 @@
             <result name="input">/login.jsp</result>
         </action>
 
-        <action name="registerAction" class="com.digital.action.LoginAction" method="register">
-            <result name="success">/index.jsp</result>
-            <result name="input">/login.jsp</result>
+        <action name="registerAction" class="com.digital.action.RegisterAction">
+            <result name="success">/userinfo.jsp</result>
+            <result name="input">/register.jsp</result>
         </action>
         
 		<action name="list" class="com.digital.action.ProductInfoAction" method="list">

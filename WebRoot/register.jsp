@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%> 
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -24,27 +25,19 @@
 </head>
 
 <body>
-	<div>
-		<form name="resisterForm" action="registerAction" method="post">
-			<table>
-				<tr>
-					<td><font color="red">${message} </font></td>
-				</tr>
-				<tr>
-					<td>用户名：</td>
-					<td><input name="username" type="text" /></td>
-				</tr>
-				<tr>
-					<td>密码：</td>
-					<td><input name="password" type="password" /></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="注册"></td>
-				</tr>
+	<div class="reg_c fl ah" >
+	<s:form action="register" method="post" name="frm">
+	    <table width="300" align="center" style="text-align:center; ">
+		<s:textfield name="user.userName" label="登录名称" style="width:220px;"/>
+		<s:password name="user.password" label="登录密码" style="width:220px;"/>
+		<s:password name="repassword" label="确认密码" style="width:220px;"/>
+		<s:textfield name="user.realName" label="真实姓名" style="width:220px;"/>
+		<s:textfield name="user.address" label="通信地址" style="width:220px;"/>	
+		<s:textfield name="user.email" label="电子邮件" style="width:220px;"/>
+		<s:submit  value="注册" align="center" />
+	    </table>
+	</s:form>
+    </div>
 
-				<tr>
-			</table>
-		</form>
-	</div>
 </body>
 </html>
