@@ -22,6 +22,7 @@ public class ProductInfoAction extends ActionSupport implements RequestAware{
 	public String list() {
 		TypeDAO typeDAO = new TypeDAOImpl();
 		List<Type> typeList = typeDAO.getAll();
+		
 		if (!typeList.isEmpty()) {
 			request.put("typeList", typeList);
 		}
