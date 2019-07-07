@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class User {
     private int id;
-    private String username;
+    private String userName;
     private String password;
     private String realName;
     private String sex;
@@ -105,10 +105,10 @@ public class User {
     }
 
     public String getUsername() {
-        return username;
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String userName) {
+        this.userName = userName;
     }
 }

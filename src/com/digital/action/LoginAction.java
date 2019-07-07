@@ -4,23 +4,24 @@ import com.digital.dao.impl.UserDAOImpl;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport {
-    private String username;
+    private String userName;
     private String password;
     private String message = "";
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public void setPassword(String password) {
         this.password = password;
     }
 
@@ -36,7 +37,7 @@ public class LoginAction extends ActionSupport {
     private UserDAOImpl databaseAccessTool = new UserDAOImpl();
 
     public String login() {
-        if (databaseAccessTool.loginInfoIsCorrect(username, password)) {
+        if (databaseAccessTool.loginInfoIsCorrect(userName, password)) {
             setMessage("登陆成功！");
             return "success";
         }
