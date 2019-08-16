@@ -8,11 +8,13 @@
  	<constant name="struts.i18n.encoding" value="utf-8"/>
  	
  	<constant name="struts.locale" value="zh_HK"></constant>
- 	
+
+    <!-- *_*Action 中第一个*表示类名前缀，比如LoginAction则第一个*表示Login -->
+    <!-- 第二个*表示方法名，以及跳转的jsp名 -->
     <package name="digital" namespace="/" extends="struts-default">
-        <action name="loginAction" class="com.digital.action.LoginAction" method="login">
-            <result name="success">/index.jsp</result>
-            <result name="input">/login.jsp</result>
+        <action name="*_*Action" class="com.digital.action.{1}Action" method="{2}">
+            <result name="success" type="redirect">/index.jsp</result>
+            <result name="input">/{2}.jsp</result>
         </action>
 
         <action name="registerAction" class="com.digital.action.RegisterAction" method="execute">
@@ -21,7 +23,7 @@
         </action>
         
 		<action name="list" class="com.digital.action.ProductInfoAction" method="list">
-            <result name="index">/index.jsp</result>	
+            <result name="index" type="redirect">/index.jsp</result>
         </action>
     </package>  
 

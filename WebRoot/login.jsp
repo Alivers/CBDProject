@@ -26,7 +26,7 @@
 
 <body>
 <div>
-    <form name="loginform" action="loginAction" method="post">
+    <form name="loginform" action="Login_loginAction" method="post">
         <table>
             <tr>
                 <td>
