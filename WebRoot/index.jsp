@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import=" java.text.SimpleDateFormat"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sx" uri="/struts-dojo-tags"%>
 <%
@@ -12,7 +13,8 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>电子商城-首页</title>
+<title>上海军火交易市场</title>
+<sx:head />  <!-- Ajex要用 -->
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -24,13 +26,41 @@
 </head>
 
 <body>
+<% 
+            Date date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String timeString = sdf.format(date);
+            long currentTime = System.currentTimeMillis(); 
+            Long stratTime = (Long) session.getAttribute("currentTime");
+            if (stratTime == null) {
+                session.setAttribute("currentTime", currentTime);
+            } 
+            else {
+                long used = (currentTime - stratTime) / 1000 / 60;
+                session.setAttribute("used", used);
+                boolean flag = false;
+                if (used > 60) {
+                    flag = true;
+                }
+                session.setAttribute("flag", flag);
+            } 
+        %>
+        	现在时间是：<%=timeString %>
+        <s:if test="#session.flag==true">
+         	你已访问时间：<s:property value="#session.used" default="0" />分钟
+         </s:if>
+        <s:else>
+         	你已访问时间：<s:property value="#session.used" default="0" />分钟
+         </s:else>
+
 	<div class="itop_body">
-      <div class="itop_left fl">欢迎光临好东东买卖网！  
+      <div class="itop_left fl">欢迎光临上海军火交易市场！  
       </div>
 	<div class="itop_right fl">
 	  <div id="header">
-          <sx:div id="tsdiv" updateFreq="20000" href="login.action">
-          </sx:div>
+	  		<!-- 
+          <sx:div id="tsdiv" updateFreq="2000" href="Login_loginAction">
+          </sx:div> -->
         </div>
         <!-- 用于显示请求 -->
 	  <font color="red">${message}</font>

@@ -28,19 +28,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <body>
 	<!-- <h3>使用sx:tree和sx:treenode标签生成静态树</h3> -->
-	<sx:tree label="图书列表" id="booklist" showRootGrid="true" showGrid="true"
+	<sx:tree label="军火列表" id="booklist" showRootGrid="true" showGrid="true"
 		treeSelectedTopic="treeSelected">
-		<sx:treenode label="清华大学出版社" id="tsinghua">
-			<sx:treenode label="SSH框架技术及项目实战" id="ssh" />
-			<sx:treenode label="J2EE企业级开发" id="j2ee" />
-			<sx:treenode label="Ajax技术" id="ajax" />
+		<sx:treenode label="俄国" id="tsinghua">
+			<sx:treenode label="AK47" id="ssh" />
 		</sx:treenode>
-		<sx:treenode label="电子工业出版社" id="phei">
-			<sx:treenode label="Struts 2.X权威指南" id="struts2" />
-			<sx:treenode label="Java Web程序设计" id="javaweb" />
+		<sx:treenode label="美国" id="phei">
+			<sx:treenode label="浪潮4" id="struts2" />
 		</sx:treenode>
-		<sx:treenode label="人民邮电出版社" id="ptpress">
-			<sx:treenode label="JSP程序设计教程" id="jsp" />
+		<sx:treenode label="中国" id="ptpress">
+			<sx:treenode label="东风23" id="jsp" />
+			<sx:treenode label="大疆军用" id="jsp" />
 		</sx:treenode>
 	</sx:tree>
 </body>
